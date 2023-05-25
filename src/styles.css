@@ -1,0 +1,7 @@
+/* see https://css-tricks.com/accessible-font-sizing-explained/ */
+:root {
+  font-size: 62.5%; /* (62.5/100) * 16px = 10px */
+  --font-size-sm: 1.4rem; /* 14 px */
+  --font-size-default: 1.6rem; /* 16px */
+  --font-size-lg: 2.4rem; /* 24px */
+}
