@@ -5,3 +5,7 @@
   --font-size-default: 1.6rem; /* 16px */
   --font-size-lg: 2.4rem; /* 24px */
 }
+
+body {
+    font-family: verdana, sans-serif;
+}
