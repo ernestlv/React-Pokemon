@@ -50,3 +50,11 @@ export const objectify = function(arr) {
 export const unique = function(arr) {
   return arr.reduce((unique, element) => unique.indexOf(element) === -1 ? [...unique, element] : unique, []);
 }
+
+export const sort = function(arr) {
+  return [...arr].sort((a, b) => a - b); //sort asc
+}
+
+export const sortDesc = function(arr) {
+  return [...arr].sort((a, b) => b - a); //sort desc
+}
