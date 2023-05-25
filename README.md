@@ -11,4 +11,3 @@ npm run dev
 npm run build
 
 #issues
-lite-server - high vulnerability
