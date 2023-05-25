@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "lite-server",
+    "dev": "webpack serve",
     "watch": "webpack --watch",
     "build": "webpack --config webpack.config.js"
   },
@@ -14,10 +14,10 @@
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^6.7.1",
-    "lite-server": "^2.6.1",
     "style-loader": "^3.3.1",
     "webpack": "^5.72.1",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.15.0"
   },
   "dependencies": {
     "bootstrap": "^5.1.3",

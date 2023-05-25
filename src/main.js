@@ -1,7 +1,7 @@
 import './styles.css';
 import { print, first, last, middle, replace, pairs, max, min, sort, sortDesc } from "./util";
 
-print("Hello", "World", "!!!");
+print("Hello", "World", "!");
 var arr = [0,1,2,3];
 print(middle(arr));
 print(replace(1, 5, arr));
