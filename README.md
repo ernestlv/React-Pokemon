@@ -1,13 +1,18 @@
 # js-util
-Utilities to use in javascript development
+Utilities to use in React development
+
+#Technology Stack
+Webpack 5
+Babel 7
+React 18
 
 #Run
 
 npm run watch
 npm run dev
 
-#build
+#Build
 
 npm run build
 
-#issues
+#Issues
