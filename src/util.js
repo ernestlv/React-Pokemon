@@ -58,3 +58,7 @@ export const sort = function(arr) {
 export const sortDesc = function(arr) {
   return [...arr].sort((a, b) => b - a); //sort desc
 }
+
+export const compose = function(...fns) {
+  return (arg) => fns.reduce((arg, fn) => fn(arg), arg); //compose an array of fn with single arg
+}
