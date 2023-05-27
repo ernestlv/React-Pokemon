@@ -1,10 +1,11 @@
 # js-util
-Utilities to use in React development
+Minimal React Application
 
 #Technology Stack
 Webpack 5
 Babel 7
 React 18
+ESLint 8 with airbnb rules
 
 #Run
 
