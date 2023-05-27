@@ -4,7 +4,7 @@ module.exports = {
   mode: 'development',
   entry: "./src/main.js",
   output: {
-    filename: "main.js",
+    filename: "app.js",
     path: path.resolve(__dirname, "dist")
   },
   devtool: 'source-map',
@@ -16,6 +16,11 @@ module.exports = {
       {
         test: /\.css$/i,
         use:['style-loader', 'css-loader']
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
       }
     ]
   }

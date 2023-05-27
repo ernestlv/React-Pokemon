@@ -1,7 +1,9 @@
+import React from "react";
+
 /*
  * Define React stateless functions
  */
 
- export const list = function(props) { //this props is provided by react
-    return React.DOM.ul(null, props.items.map((item, i) => React.DOM.li({key:i}, item))); //React.DOM is a factory
+ export const List = function(props) { //props is provided by react
+    return <ul>{props.items.map((item, i) => <li key={i}>{item}</li>)}</ul>
  }

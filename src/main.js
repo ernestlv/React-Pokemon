@@ -1,17 +1,14 @@
 import './styles.css';
+import React from "react";
+import { createRoot } from "react-dom/client";
 import { print, first, last, middle, replace, pairs, max, min, sort, sortDesc } from "./util";
-import { list } from "./elements";
+import { List } from "./elements";
 
-print("Hello", "World", "!");
-var arr = [0,1,2,3];
-print(middle(arr));
-print(replace(1, 5, arr));
-print(pairs({a:1, b:2, c:3}))
-print(max(arr));
-print(min(arr));
-print(sortDesc([4,1,5,7,88,2]));
+print("React Program Start!");
 
-ReactDOM.render(
-  React.createElement(list, {items:[1,2,3]}),
-  document.getElementById("react-container")
-)
+const arr = [0,1,2,3,4];
+const container = document.getElementById("react-container");
+const root = createRoot(container);
+const el = <List items={arr} />;
+console.log(el);
+root.render(el);
