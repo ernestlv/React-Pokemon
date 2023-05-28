@@ -1,12 +1,10 @@
+import { v4 } from 'uuid';
+
 /*
 *
 * Handles immutable arrays
 *
 */
-export function print(...msg) {
-  const timestamp = new Date();
-  console.log(`${timestamp}: ${msg.join(', ')}`);
-}
 
 export function first(arr) {
   const [item] = arr;
@@ -62,4 +60,8 @@ export function sortDesc(arr) {
 
 export function compose(...fns) { // compose an array of fn with single arg
   return (arg) => fns.reduce((currentArg, fn) => fn(currentArg), arg);
+}
+
+export function uuidArray(arr) {
+  return arr.map((item) => ({ key: v4(), value: item }));
 }
