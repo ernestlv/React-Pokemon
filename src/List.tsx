@@ -1,10 +1,5 @@
 import React from 'react';
-
-interface ListProps {
-  // Declare props here
-  items: Array<{key:string; value:number}>;
-}
-
+import { ListProps } from './types.d';
 /*
  * Define React stateless functions
  */
