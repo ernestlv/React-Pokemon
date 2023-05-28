@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 } from 'uuid';
 import { List } from './List';
 
 /*
@@ -6,8 +7,8 @@ import { List } from './List';
  */
 
 export const  App: React.FC = () => {
-  const arr:Array<{key:string, value:number}> = [{key:'0', value:0}, {key:'1', value:1}, {key:'2', value:2}];
-
+  const arr:Array<{key:string, value:number}> = [{key:v4(), value:0}, {key:v4(), value:1}, {key:v4(), value:2}];
+  console.log(arr);
   return (
     <section>
       <h1>

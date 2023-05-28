@@ -1,4 +1,4 @@
-export interface ListProps {
+interface ListProps {
   // Declare props here
   items: Array<{key:string; value:number}>;
 }

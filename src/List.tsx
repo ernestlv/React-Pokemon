@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListProps } from './types.d';
+
 /*
  * Define React stateless functions
  */
