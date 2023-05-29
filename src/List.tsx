@@ -6,7 +6,7 @@ import React from 'react';
 
 export const List:React.FC<ListProps> = ({ items }) => { //  items is provided by react
   return (
-    <ul>
+    <ul className="list">
       {items.map((item) => {
         const { key, value } = item;
         return <li key={key}>{ value }</li>;

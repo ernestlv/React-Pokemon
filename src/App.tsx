@@ -1,7 +1,6 @@
 import React from 'react';
 import { uuidArray } from './util';
-import { List } from './List';
-import { Pokemon } from './Pokemon';
+import { PokemonList } from './PokemonList';
 
 /*
  * Define React stateless functions
@@ -13,10 +12,9 @@ export const  App: React.FC = () => {
   return (
     <section>
       <h1>
-        Works!!!
+        Pokemon App
       </h1>
-      <Pokemon title='my pokemon app!!!' />
-      <List items={arr} />
+      <PokemonList title='List of Pokemons' />
     </section>
   );
 }
