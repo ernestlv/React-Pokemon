@@ -11,15 +11,26 @@ interface ListLinkProps {
 interface AppProps {}
 
 interface AppState {
-  pokemonList: Array<{name:string, url:string}>;
+  pokemonsSuggested: Array<{name:string, url:string}>;
+  pokemonsSearched: Array<string>;
+  pokemonDetail: { [key:string]:any } | null;
 }
 
 interface PokemonListProps {
-  title: string;
   pokemonList: Array<{name:string, url:string}>;
   onClick: ( e:any, item: any ) => void
 }
 
 interface PokemonFormProps {
-  onSubmit: ( e: any, input:any ) => void;
+  pokemonsSuggested: Array<{name:string, url:string}>;
+  onSubmit: ( e: any, pokemonName:string ) => void;
+}
+
+interface PokemonHistoryProps {
+  pokemonsSearched: Array<string>;
+  onClick: ( e:any, pokemonName: string ) => void
+}
+
+interface PokemonDetailProps {
+  pokemonDetail: { [key:string]:any } | null;
 }

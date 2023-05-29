@@ -9,7 +9,7 @@ export const ListLink:React.FC<ListLinkProps> = ({ items, onClick }) => { //  it
     <ul className="listLink">
       {items.map((item) => {
         const { key, value } = item;
-        return <li key={ key }><a href={ "#"+key } onClick={ ( e ) => onClick( e, item ) }>{ value }</a></li>;
+        return <li key={ key }><a href={ "#"+key } onClick={ ( e ) => onClick( e, item.value ) }>{ value }</a></li>;
       })}
     </ul>
   );
