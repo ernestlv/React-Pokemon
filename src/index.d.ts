@@ -13,5 +13,9 @@ interface PokemonProps {
 }
 
 interface PokemonState {
-  pokemonList:Array<{name:string, url:string}>;
+  pokemonList: Array<{name:string, url:string}>;
+}
+
+interface PokemonFormProps {
+  onSubmit: ( e: any, input:any ) => void;
 }

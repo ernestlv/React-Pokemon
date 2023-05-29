@@ -1,13 +1,18 @@
 import React from 'react';
-import { uuidArray } from './util';
 import { PokemonList } from './PokemonList';
+import { PokemonForm } from './PokemonForm';
 
 /*
  * Define React stateless functions
  */
 
 export const  App: React.FC = () => {
-  const arr:Array<{key:string, value:number}> = uuidArray([0,1,2]);
+
+  const onSubmit = ( e:any, input:any ) => {
+    e.preventDefault();
+    const pokemonName = input.value;
+    alert("submitted!" + pokemonName);
+  }
 
   return (
     <section>
@@ -15,6 +20,7 @@ export const  App: React.FC = () => {
         Pokemon App
       </h1>
       <PokemonList title='List of Pokemons' />
+      <PokemonForm onSubmit={ onSubmit }/>
     </section>
   );
 }
