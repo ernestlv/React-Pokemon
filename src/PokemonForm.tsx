@@ -5,25 +5,23 @@ export const  PokemonForm: React.FC<PokemonFormProps> = ({ pokemonsSuggested, on
 
   const pokemons = pokemonsSuggested.map(( pokemon ) => ({ key: v4(), value: pokemon.name }));
 
+  const onClick = ( e:any, pokemonName:string ) => {
+    e.preventDefault();
+    onSubmit( pokemonName );
+  }
+
   let _pokemonName:any;
   let _pokemonSuggested:any;
 
-  const onClick = ( e:any, pokemonName:string ) => {
-    e.preventDefault();
-    pokemonName = pokemonName.replace(/\s/g, '');
-    if (pokemonName !== "") {
-      onSubmit( e, pokemonName );
-    }
-  }
-
   return (
-    <div className="pokemonForm">
-      <form>
+    <section className="pokemonForm">
+      <h2>Pokemon Search</h2>
+      <form onSubmit={ ( e ) => e.preventDefault() }>
         <label htmlFor="pokemonName">Type a pokemon name: </label>
         <input type="text" id="pokemonName" name="pokemonName" defaultValue="" ref={ input => _pokemonName = input } />
         &nbsp;
         <button onClick={ ( e ) => onClick( e, _pokemonName.value ) }>Search</button>
-        &nbsp;
+        &nbsp;&nbsp;or&nbsp;&nbsp;
         <label htmlFor="pokemonSuggested">Select a suggested pokemon to search: </label>
         <select id="pokemonSuggested" name="pokemonSuggested" defaultValue="" ref={ select => _pokemonSuggested = select } >
           {
@@ -36,6 +34,6 @@ export const  PokemonForm: React.FC<PokemonFormProps> = ({ pokemonsSuggested, on
         &nbsp;
         <button onClick={ ( e ) => onClick( e, _pokemonSuggested.value ) }>Search</button>
       </form>
-    </div>
+    </section>
   );
 }

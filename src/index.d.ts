@@ -1,34 +1,34 @@
-interface ListProps {
-  // Declare props here
-  items: Array<{key:string; value:any}>;
-}
-
-interface ListLinkProps {
-  items: Array<{key:string; value:any}>;
-  onClick: ( e:any, item:any ) => void;
-}
-
-interface AppProps {}
-
 interface AppState {
   pokemonsSuggested: Array<{name:string, url:string}>;
   pokemonsSearched: Array<string>;
   pokemonDetail: { [key:string]:any } | null;
 }
 
-interface PokemonListProps {
-  pokemonList: Array<{name:string, url:string}>;
-  onClick: ( e:any, item: any ) => void
+interface UpdateHistoryAction {
+  type: 'UPDATE_HISTORY';
+  pokemonName: string;
 }
+
+interface UpdateDetailAction {
+  type: 'UPDATE_DETAIL';
+  pokemonDetail: { [key:string]:any } | null;
+}
+
+interface UpdateSuggestionsAction {
+  type: 'UPDATE_SUGGESTIONS';
+  pokemonsSuggested: Array<{name:string, url:string}>;
+}
+
+type AppAction = UpdateHistoryAction | UpdateDetailAction | UpdateSuggestionsAction;
 
 interface PokemonFormProps {
   pokemonsSuggested: Array<{name:string, url:string}>;
-  onSubmit: ( e: any, pokemonName:string ) => void;
+  onSubmit: ( pokemonName: string ) => void;
 }
 
 interface PokemonHistoryProps {
   pokemonsSearched: Array<string>;
-  onClick: ( e:any, pokemonName: string ) => void
+  onClick: ( pokemonName: string ) => void;
 }
 
 interface PokemonDetailProps {

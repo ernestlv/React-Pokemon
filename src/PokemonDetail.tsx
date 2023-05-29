@@ -2,15 +2,15 @@ import React from 'react';
 import { v4 } from 'uuid';
 
 export const  PokemonDetail: React.FC<PokemonDetailProps> = ({ pokemonDetail }) => {
+
   const pokemon = pokemonDetail;
+
   return (
     <section className="pokemonDetail">
+      <h2>Pokemon Information</h2>
       {
-        (!pokemon) ?
-          <div>Pokemon Not Found</div>
-        :
+        ( !pokemon ) ? <div>Pokemon Not Found</div> :
           <div>
-            <h2>Pokemon Information</h2>
             <h3>
               <img src={ pokemon.sprites.other.dream_world.front_default } />
               <span>{ pokemon.name }</span>
