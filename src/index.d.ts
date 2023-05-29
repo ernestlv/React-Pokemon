@@ -5,15 +5,19 @@ interface ListProps {
 
 interface ListLinkProps {
   items: Array<{key:string; value:any}>;
-  onClick: ( item:any ) => void;
+  onClick: ( e:any, item:any ) => void;
 }
 
-interface PokemonProps {
-  title: string;
-}
+interface AppProps {}
 
-interface PokemonState {
+interface AppState {
   pokemonList: Array<{name:string, url:string}>;
+}
+
+interface PokemonListProps {
+  title: string;
+  pokemonList: Array<{name:string, url:string}>;
+  onClick: ( e:any, item: any ) => void
 }
 
 interface PokemonFormProps {
