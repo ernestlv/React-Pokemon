@@ -2,19 +2,19 @@
 React Pokedex Application
 
 ##Technology Stack
-Webpack 5
-Babel 7
-React 18
-Redux 4
-ESLint 8 with airbnb rules
-TypeScript 5
+- Webpack 5
+- Babel 7
+- React 18
+- Redux 4
+- ESLint 8 with airbnb rules
+- TypeScript 5
 
 ##Run
 
-npm install
-npm run build
-npm run dev
-go to http://localhost:8080
+- npm install
+- npm run build
+- npm run dev
+- go to http://localhost:8080
 
 ##Usage Instructions
 
