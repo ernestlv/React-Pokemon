@@ -1,20 +1,20 @@
 import React from 'react';
-import { v4 } from 'uuid';
-import { List } from './List';
+import { ContainerForm, ContainerDetail, ContainerHistory } from './containers';
 
-/*
- * Define React stateless functions
- */
+export const App = () => {
 
-export const  App: React.FC = () => {
-  const arr:Array<{key:string, value:number}> = [{key:v4(), value:0}, {key:v4(), value:1}, {key:v4(), value:2}];
-  console.log(arr);
   return (
-    <section>
+    <section className="pokemonApp">
       <h1>
-        Works!!!
+        Pokedex App
       </h1>
-      <List items={arr} />
+      <ContainerForm />
+      <hr />
+      <div className="container">
+        <ContainerHistory />
+        <ContainerDetail />
+      </div>
     </section>
   );
+
 }
