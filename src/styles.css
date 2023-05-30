@@ -10,6 +10,49 @@ body {
     font-family: verdana, sans-serif;
 }
 
+.container {
+  display: flex;
+}
+
 .pokemonApp {
   font-size: var(--font-size-default);
+}
+
+.pokemonApp h1 {
+  font-size: 3rem;
+}
+
+.pokemonForm {
+  margin-bottom: 2rem;
+}
+
+.pokemonHistory {
+  flex-grow: 1
+}
+
+.pokemonDetail {
+  flex-grow: 2;
+}
+
+.pokemonSprites {
+  float: left;
+  width: 50%;
+}
+
+.pokemonName {
+  padding-left: 3rem;
+}
+
+.pokemonStats {
+  float: right;
+  width: 50%;
+  margin-top: -6.3rem;
+}
+
+.pokemonStats dt {
+  font-weight: bold;
+}
+
+.pokemonStats dl dt:first-child + dd {
+  margin: 1rem 8rem;
 }

@@ -10,8 +10,10 @@ export const App = () => {
       </h1>
       <ContainerForm />
       <hr />
-      <ContainerHistory />
-      <ContainerDetail />
+      <div className="container">
+        <ContainerHistory />
+        <ContainerDetail />
+      </div>
     </section>
   );
 
