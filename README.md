@@ -1,4 +1,4 @@
-# js-util
+# React-Pokemon
 React Pokedex Application
 
 ##Technology Stack
