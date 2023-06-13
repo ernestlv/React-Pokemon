@@ -18,6 +18,8 @@ async function searchPokemon( pokemonName:string ) {
   return pokemonDetail;
 }
 
+/* call action and passes state */
+
 export const ContainerForm = connect(
   ( state:AppState ) => ({
     pokemonsSuggested: [ ...state.pokemonsSuggested ]

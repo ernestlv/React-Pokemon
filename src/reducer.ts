@@ -18,6 +18,7 @@ const initialState: AppState = {
   pokemonDetail: null
 };
 
+/* updates state */
 export const appReducer: Reducer<AppState, AppAction> = (state = initialState, action) => {
 
   switch (action.type) {

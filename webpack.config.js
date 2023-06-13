@@ -13,7 +13,9 @@ module.exports = {
   },
   devtool: 'source-map',
   devServer: {
-    static: '.'
+    static: {
+      directory: '.'
+    }
   },
   module: {
     rules: [
