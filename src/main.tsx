@@ -1,6 +1,6 @@
 import './styles.css';
 import ReactDOM from 'react-dom/client';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { AppContext, appReducer } from './reducer';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -26,18 +26,17 @@ const root = ReactDOM.createRoot(container);
 const store = createStore( appReducer );
 const Main = () => {
   const [ mainState, setMainState ] = useState(0); //local state for main component
-  let appContext = useContext(AppContext); //it executes on each render of main component it always contains default value of AppContext
   const click =  () => {
     setMainState( mainState + 1 ); //re-render Main component i.e. whole tree
-    appContext++;
-    console.log("click", "appContext", appContext, "mainState", mainState);
+    console.log("click Main:", "mainState", mainState);
   }
-  console.log("main:", "appContext", appContext, "mainState", mainState);
+
+  console.log("render Main:", "mainState", mainState);
   return (
     <AppContext.Provider value={ mainState }> {/* pass the local state of main component to App comp */}
       <Provider store={store}>
+        <button onClick={ click  }>change main state</button> mainState: { mainState }
         <App />
-        <button onClick={ click  }>change main state</button>
       </Provider>
     </AppContext.Provider>
   );
