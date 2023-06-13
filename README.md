@@ -2,6 +2,9 @@
 React Pokedex Application
 
 ##Technology Stack
+
+- Node 18.15.0
+- npm 9.6.7
 - Webpack 5
 - Babel 7
 - React 18
@@ -14,7 +17,7 @@ React Pokedex Application
 - npm install
 - npm run build
 - npm run dev
-- go to http://localhost:8080
+- go to http://localhost:8080 (first time might take a few seconds)
 
 ##Usage Instructions
 
