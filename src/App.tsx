@@ -6,7 +6,7 @@ export const App = () => {
   return (
     <section className="pokemonApp">
       <h1>
-        Pokedex App
+        <img src="./assets/25.png" width="50px" height="50px"/><span>Pokedex App</span>
       </h1>
       <ContainerForm />
       <hr />

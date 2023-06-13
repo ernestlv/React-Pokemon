@@ -20,6 +20,17 @@ body {
 
 .pokemonApp h1 {
   font-size: 3rem;
+  line-height: 2;
+  position: relative;
+}
+
+.pokemonApp h1 img {
+  position: absolute;
+  top: 0.5rem;
+}
+
+.pokemonApp h1 span {
+  padding-left: 5rem;
 }
 
 .pokemonForm {
