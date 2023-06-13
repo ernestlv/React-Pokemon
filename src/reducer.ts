@@ -1,3 +1,4 @@
+import { createContext } from 'react';
 import { Reducer } from 'redux';
 import { unique } from './util';
 
@@ -17,6 +18,8 @@ const initialState: AppState = {
   pokemonsSearched: [],
   pokemonDetail: null
 };
+
+export const AppContext = createContext(111);
 
 /* updates state */
 export const appReducer: Reducer<AppState, AppAction> = (state = initialState, action) => {
