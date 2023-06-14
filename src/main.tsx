@@ -6,8 +6,9 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { App } from './App';
 
-async function initPokemonSuggestions() {
 
+async function initPokemonSuggestions() {
+  console.log('fetching suggestions ...');
   let response;
 
   try {
@@ -15,17 +16,25 @@ async function initPokemonSuggestions() {
     response = await response.json();
   } catch( e ) {
     response = Promise.resolve({ results:[] });
+  } finally {
+    console.log('fetching response', response);
+    store.dispatch({
+      type: 'UPDATE_SUGGESTIONS',
+      pokemonsSuggested: response.results
+    });
   }
-
-  return response;
-
-}
+  console.log('fetching suggestions done.');
+};
 
 const container:Element = document.getElementById('react-container')!;
 const root = ReactDOM.createRoot(container);
 const store = createStore( appReducer );
 const Main = () => {
   const [ mainState, setMainState ] = useState(0); //local state for main component
+  useEffect(() => { // runs after Main component is rendered
+    initPokemonSuggestions();
+  }, []); // empty array make sure it only runs once
+
   const click =  () => {
     setMainState( mainState + 1 ); //re-render Main component i.e. whole tree
     console.log("click Main:", "mainState", mainState);
@@ -41,12 +50,4 @@ const Main = () => {
     </AppContext.Provider>
   );
 }
-
 root.render(<Main />);
-
-initPokemonSuggestions().then(({results}) => {
-  store.dispatch({
-    type: 'UPDATE_SUGGESTIONS',
-    pokemonsSuggested: results
-  });
-});
