@@ -1,16 +1,11 @@
 import React from 'react';
-import { useContext } from 'react';
-import { v4 } from 'uuid';
-import { AppContext } from './reducer';
 
-const  NoPokemon: React.FC = () => {
-let appContext = useContext(AppContext);
-  return (<div>Pokemon Not Found {appContext}</div>);
-
+const  NoPokemon:React.FC = () => {
+  return (<div>Pokemon Not Found</div>);
 }
 
-const  Pokemon: React.FC<PokemonDetailProps> = ({ pokemonDetail }) => {
-  const pokemon:any = pokemonDetail;
+const  Pokemon:React.FC<{ [key:string]:any }> = ({ pokemonDetail }) => {
+  const pokemon = pokemonDetail;
 
   return (
     <div>
@@ -64,8 +59,7 @@ const  Pokemon: React.FC<PokemonDetailProps> = ({ pokemonDetail }) => {
   );
 }
 
-export const  PokemonDetail: React.FC<PokemonDetailProps> = ({ pokemonDetail }) => {
-
+export const  PokemonDetail:React.FC<PokemonDetailProps> = ({ pokemonDetail }) => { // props is passed by react as an obj
   return (
     <section className="pokemonDetail">
       <h2>Pokemon Information</h2>

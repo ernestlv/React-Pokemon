@@ -1,33 +1,57 @@
-import { useState, useContext } from 'react';
-import { AppContext } from './reducer';
-import { ContainerForm, ContainerDetail, ContainerHistory } from './containers';
+import { useContext } from 'react';
+import { Context } from './context';
+import { UPDATE_HISTORY, UPDATE_DETAIL } from './reducer';
+import { PokemonForm } from './PokemonForm';
+import { PokemonDetail } from './PokemonDetail';
+import { PokemonHistory } from './PokemonHistory';
 
-export const App = () => {
+async function searchPokemon( pokemonName:string, dispatch:any ) {
+  let pokemonDetail = null;
 
-  const [appState, setAppState] = useState(1); //local state for App component it executes on each App render
-  let appContext = useContext(AppContext); //takes value from main component Provider. it executes on each App render
-  const click = () => {
-    appContext++;
-    setAppState( appState + 1 ); //call render for App component
-    console.log("click App:", "appContext", appContext, "appState", appState);
+  try {
+    pokemonName = pokemonName.trim();
+    if (pokemonName !== "") {
+      const response = await fetch('https://pokeapi.co/api/v2/pokemon/'+pokemonName);
+      pokemonDetail = await response.json();
+    }
+  } catch( e ) {
+    pokemonDetail = null;
+  } finally {
+    dispatch({
+      type: UPDATE_DETAIL,
+      pokemonDetail
+    });
+  }
+}
+
+export function App() {
+  const { state, dispatch } = useContext(Context);
+  const { pokemonsSuggested, pokemonsSearched, pokemonDetail } = state;
+
+  function onSubmit( pokemonName:string ) {
+    searchPokemon( pokemonName, dispatch );
+    dispatch({
+      type: UPDATE_HISTORY,
+      pokemonName
+    });
   }
 
-  console.log("render APP:", "appContext", appContext, "appState", appState);
+  function onClick( pokemonName:string ) {
+    searchPokemon( pokemonName, dispatch );
+  }
+
+  console.log("render APP:");
   return (
-    <AppContext.Provider value={ appState + appContext }>
       <section className="pokemonApp">
         <h1>
           <img src="./assets/25.png" width="50px" height="50px"/><span>Pokedex App</span>
         </h1>
-        <ContainerForm />
+        <PokemonForm pokemonsSuggested={ pokemonsSuggested } onSubmit={ onSubmit } />
         <hr />
-        <button onClick={ click }> change app state </button> appContext (mainState): { appContext } appState: { appState } {/* re-render App subtree */}
         <div className="container">
-          <ContainerHistory />
-          <ContainerDetail />
+          <PokemonHistory pokemonsSearched={ pokemonsSearched } onClick={ onClick } />
+          <PokemonDetail pokemonDetail={ pokemonDetail || null }/>
         </div>
       </section>
-    </AppContext.Provider>
   );
-
 }

@@ -1,4 +1,3 @@
-import { createContext } from 'react';
 import { Reducer } from 'redux';
 import { unique } from './util';
 
@@ -13,33 +12,36 @@ function updatePokemonHistory( state:AppState, pokemonName:string ) {
   return pokemonsSearched;
 }
 
-const initialState: AppState = {
+export const initialState: AppState = {
   pokemonsSuggested: [],
   pokemonsSearched: [],
   pokemonDetail: null
 };
 
-export const AppContext = createContext(111);
+/* action types */
+export const UPDATE_HISTORY = 'UPDATE_HISTORY';
+export const UPDATE_DETAIL = 'UPDATE_DETAIL';
+export const UPDATE_SUGGESTIONS = 'UPDATE_SUGGESTIONS';
 
 /* updates state */
 export const appReducer: Reducer<AppState, AppAction> = (state = initialState, action) => {
 
   switch (action.type) {
-    case 'UPDATE_HISTORY':
+    case UPDATE_HISTORY:
       return {
         ...state,
-        pokemonsSearched: updatePokemonHistory(state, action.pokemonName)
+        pokemonsSearched: updatePokemonHistory(state, ( <UpdateHistoryAction>action ).pokemonName)
       };
-    case 'UPDATE_DETAIL':
+    case UPDATE_DETAIL:
       const www = {
         ...state,
-        pokemonDetail: action.pokemonDetail
+        pokemonDetail: ( <UpdateDetailAction>action ).pokemonDetail
       };
       return www;
-    case 'UPDATE_SUGGESTIONS':
+    case UPDATE_SUGGESTIONS:
       return {
         ...state,
-        pokemonsSuggested: action.pokemonsSuggested
+        pokemonsSuggested: ( <UpdateSuggestionsAction>action ).pokemonsSuggested
       };
     default:
       return state;

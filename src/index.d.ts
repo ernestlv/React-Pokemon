@@ -5,21 +5,26 @@ interface AppState {
 }
 
 interface UpdateHistoryAction {
-  type: 'UPDATE_HISTORY';
+  type: string;
   pokemonName: string;
 }
 
 interface UpdateDetailAction {
-  type: 'UPDATE_DETAIL';
+  type: string;
   pokemonDetail: { [key:string]:any } | null;
 }
 
 interface UpdateSuggestionsAction {
-  type: 'UPDATE_SUGGESTIONS';
+  type: string;
   pokemonsSuggested: Array<{name:string, url:string}>;
 }
 
 type AppAction = UpdateHistoryAction | UpdateDetailAction | UpdateSuggestionsAction;
+
+interface AppContext {
+  state: AppState;
+  dispatch: Dispatch<AppAction>;
+}
 
 interface PokemonFormProps {
   pokemonsSuggested: Array<{name:string, url:string}>;

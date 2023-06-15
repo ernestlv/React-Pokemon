@@ -1,7 +1,7 @@
 import React from 'react';
 import { v4 } from 'uuid';
 
-export const  PokemonForm: React.FC<PokemonFormProps> = ({ pokemonsSuggested, onSubmit }) => {
+export const  PokemonForm:React.FC<PokemonFormProps> = ( { pokemonsSuggested, onSubmit } ) => { // props is passed by react as an object
 
   const pokemons = pokemonsSuggested.map(( pokemon ) => ({ key: v4(), value: pokemon.name }));
 
