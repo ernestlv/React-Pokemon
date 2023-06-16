@@ -1,5 +1,5 @@
-# React-Pokemon
-React Pokedex Application
+## React & Redux with Hooks
+React Application implementing Redux pattern through useContext & useReducer and annotated with TypeScript
 
 ##Technology Stack
 
@@ -16,7 +16,7 @@ React Pokedex Application
 
 - npm install
 - npm run build
-- npm run dev
+- npm start
 - go to http://localhost:8080 (first time might take a few seconds)
 
 ##Usage Instructions
@@ -25,24 +25,6 @@ The interface has two fields, first open text field is to manually enter any pok
 
 The results area is divided into three sectional columns; the leftmost column shows a list of searched pokemon names, you can click on any name to revist that pokemon. The middle column shows the pokemon sprites and name just beneath the main sprite. The third column shows the pokemon most popular stats.
 
-##Business Requirements
-
-- Use the Pokemon API to make API requests for data https://pokeapi.co/docs/v2.  => Done.
-- Able to search for any Pokemon => Done.
-- Able to see a history of what has been searched and revisit at anytime. => Done.
-
-##Technical Requirements
-
-- This project should be done with the latest React framework. => Done.
-- This project should be done with the latest Redux framework. => Done.
-- This project should be done using TypeScript. => Done.
-- This project should be done using version control, preferably git. => Done.
-- This project can be styled with SCSS/CSS or Styled Components if anything needs to be styled. => Done. (We used CSS)
-- This project should include a README. => Done.
-
-##Bonus Points
-
-- Able to see details about abilities, moves, species, sprites and types upon searching. => Done.
 
 ##Improvements
 
