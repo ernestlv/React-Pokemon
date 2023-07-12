@@ -1,5 +1,5 @@
 ## React & Redux with Hooks
-React Application implementing Redux pattern through useContext & useReducer and annotated with TypeScript
+React Application implementing Redux pattern through react-redux (useSelector & useDispatch) and annotated with TypeScript
 
 ##Technology Stack
 
@@ -9,6 +9,7 @@ React Application implementing Redux pattern through useContext & useReducer and
 - Babel 7
 - React 18
 - Redux 4
+- react-redux 8
 - ESLint 8 with airbnb rules
 - TypeScript 5
 
