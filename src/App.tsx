@@ -1,32 +1,19 @@
-import { useContext } from 'react';
-import { Context } from './context';
-import { UPDATE_HISTORY, UPDATE_DETAIL } from './reducer';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { UPDATE_HISTORY, initPokemonSuggestions, searchPokemon } from './reducer';
 import { PokemonForm } from './PokemonForm';
 import { PokemonDetail } from './PokemonDetail';
 import { PokemonHistory } from './PokemonHistory';
 
-async function searchPokemon( pokemonName:string, dispatch:any ) {
-  let pokemonDetail = null;
-
-  try {
-    pokemonName = pokemonName.trim();
-    if (pokemonName !== "") {
-      const response = await fetch('https://pokeapi.co/api/v2/pokemon/'+pokemonName);
-      pokemonDetail = await response.json();
-    }
-  } catch( e ) {
-    pokemonDetail = null;
-  } finally {
-    dispatch({
-      type: UPDATE_DETAIL,
-      pokemonDetail
-    });
-  }
-}
-
 export function App() {
-  const { state, dispatch } = useContext(Context);
-  const { pokemonsSuggested, pokemonsSearched, pokemonDetail } = state;
+  const pokemonsSuggested = useSelector((state:AppState) => state.pokemonsSuggested);
+  const pokemonsSearched = useSelector((state:AppState) => state.pokemonsSearched);
+  const pokemonDetail = useSelector((state:AppState) => state.pokemonDetail);
+  const dispatch = useDispatch();
+
+  useEffect(() => { // runs after Main component is rendered
+    initPokemonSuggestions(dispatch);
+  }, []); // empty array make sure it only runs once
 
   function onSubmit( pokemonName:string ) {
     searchPokemon( pokemonName, dispatch );
