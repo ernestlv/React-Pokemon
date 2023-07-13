@@ -28,12 +28,10 @@ interface AppContext {
 
 interface PokemonFormProps {
   pokemonsSuggested: Array<{name:string, url:string}>;
-  onSubmit: ( pokemonName: string ) => void;
 }
 
 interface PokemonHistoryProps {
   pokemonsSearched: Array<string>;
-  onClick: ( pokemonName: string ) => void;
 }
 
 interface PokemonDetailProps {

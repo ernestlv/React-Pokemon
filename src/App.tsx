@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { UPDATE_HISTORY, initPokemonSuggestions, searchPokemon } from './reducer';
+import { initPokemonSuggestions } from './api';
+import {  UPDATE_SUGGESTIONS } from './reducer';
 import { PokemonForm } from './PokemonForm';
 import { PokemonDetail } from './PokemonDetail';
 import { PokemonHistory } from './PokemonHistory';
@@ -12,20 +13,14 @@ export function App() {
   const dispatch = useDispatch();
 
   useEffect(() => { // runs after Main component is rendered
-    initPokemonSuggestions(dispatch);
-  }, []); // empty array make sure it only runs once
-
-  function onSubmit( pokemonName:string ) {
-    searchPokemon( pokemonName, dispatch );
-    dispatch({
-      type: UPDATE_HISTORY,
-      pokemonName
+    initPokemonSuggestions().then(response => {
+      console.log('fetching dispatch', response);
+      dispatch({
+        type: UPDATE_SUGGESTIONS,
+        pokemonsSuggested: response.results
+      });
     });
-  }
-
-  function onClick( pokemonName:string ) {
-    searchPokemon( pokemonName, dispatch );
-  }
+  }, []); // empty array make sure it only runs once
 
   console.log("render APP:");
   return (
@@ -33,10 +28,10 @@ export function App() {
         <h1>
           <img src="./assets/25.png" width="50px" height="50px"/><span>Pokedex App</span>
         </h1>
-        <PokemonForm pokemonsSuggested={ pokemonsSuggested } onSubmit={ onSubmit } />
+        <PokemonForm pokemonsSuggested={ pokemonsSuggested } />
         <hr />
         <div className="container">
-          <PokemonHistory pokemonsSearched={ pokemonsSearched } onClick={ onClick } />
+          <PokemonHistory pokemonsSearched={ pokemonsSearched } />
           <PokemonDetail pokemonDetail={ pokemonDetail || null }/>
         </div>
       </section>
