@@ -1,14 +1,27 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { v4 } from 'uuid';
+import { UPDATE_HISTORY, UPDATE_DETAIL } from './reducer';
+import { searchPokemon } from './api';
 
-export const  PokemonForm:React.FC<PokemonFormProps> = ( { pokemonsSuggested, onSubmit } ) => { // props is passed by react as an object
+export const  PokemonForm:React.FC<PokemonFormProps> = ( { pokemonsSuggested } ) => { // props is passed by react as an object
+  const dispatch = useDispatch();
 
   const pokemons = pokemonsSuggested.map(( pokemon ) => ({ key: v4(), value: pokemon.name }));
 
   const onClick = ( e:any, pokemonName:string ) => {
     e.preventDefault();
-    onSubmit( pokemonName );
-  }
+    searchPokemon( pokemonName ).then(pokemonDetail => {
+      dispatch({
+        type: UPDATE_DETAIL,
+        pokemonDetail
+      });
+    });
+    dispatch({
+      type: UPDATE_HISTORY,
+      pokemonName
+    });
+  };
 
   let _pokemonName:any;
   let _pokemonSuggested:any;

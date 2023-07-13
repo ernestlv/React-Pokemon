@@ -1,13 +1,22 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { v4 } from 'uuid';
+import { UPDATE_DETAIL } from './reducer';
+import { searchPokemon } from './api';
 
-export const  PokemonHistory: React.FC<PokemonHistoryProps> = ( { pokemonsSearched, onClick } ) => { //props is passed by react as an object
+export const  PokemonHistory: React.FC<PokemonHistoryProps> = ( { pokemonsSearched } ) => { //props is passed by react as an object
+  const dispatch = useDispatch();
 
   const pokemons = pokemonsSearched.map((pokemon) => ({ key: v4(), value: pokemon }));
 
-  const onClickWrapper = ( e:any, pokemonName:string ) => {
+  const onClick = ( e:any, pokemonName:string ) => {
     e.preventDefault();
-    onClick( pokemonName );
+    searchPokemon( pokemonName ).then(pokemonDetail => {
+      dispatch({
+        type: UPDATE_DETAIL,
+        pokemonDetail
+      });
+    });
   }
 
   console.log("render: PokemonHistory:");
@@ -18,7 +27,7 @@ export const  PokemonHistory: React.FC<PokemonHistoryProps> = ( { pokemonsSearch
       <ul className="listLink">
         {pokemons.map(( pokemon ) => {
           const { key, value } = pokemon;
-          return <li key={ key }><a href={ "#"+key } onClick={ ( e ) => onClickWrapper( e, value ) }>{ value }</a></li>;
+          return <li key={ key }><a href={ "#"+key } onClick={ ( e ) => onClick( e, value ) }>{ value }</a></li>;
         })}
       </ul>
     </section>
